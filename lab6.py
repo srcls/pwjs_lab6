@@ -10,12 +10,13 @@ if len(sys.argv) == 2:
 
 
 files = [f for f in listdir(path) if isfile(join(path, f))]
-for f in files:
-    print(f)
 
-def listdirs(path):
-    return [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
 
-listd = listdirs(path)
-for dir in listd:
-    print(dir)
+list_dirs = [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
+
+files_and_dirs = files + list_dirs
+
+sorted_fd = sorted(files_and_dirs, key=str.lower)
+
+for file in sorted_fd:
+    print(file)
